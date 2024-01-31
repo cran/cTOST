@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>cTOST Vignette</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore"><code>cTOST</code> Vignette</h1>
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Equivalence testing has first appeared in the field of pharmacokinetics <span class="citation">Metzler (1974)</span>, and find their most common application in the context of generic drug manufacturing <span class="citation">Senn (2021)</span> where the aim is to determine whether a parameter like the mean variation of treatment response between a reference and a generic drug falls within a predetermined equivalence range that we denote <span class="math inline">\((-c,c)\)</span>, indicating that drugs are equivalent. Deviations within this region would be considered insignificant as they are too small to reflect the dissimilarity of the therapeutic effects between the compared treatments. In contrast to standard hypothesis testing for equality of means, where the null hypothesis assumes that both means are equal, and the alternative assumes they are not, equivalence testing reverses the roles of the hypothesis formulations and considers a region rather than a point. Specifically, it defines the alternative as the equivalence region within which the parameter of interest must lie for the treatments to be considered equivalent, and the null hypothesis as the opposite. This paradigm puts the burden of proof on equivalence, rather than non-equality, and emphasizes the importance of assessing the similarity of treatments in addition to their differences.</p>
+</div>
+<div id="mathematical-setup" class="section level1">
+<h1>Mathematical setup</h1>
+<p>More formally, the hypotheses of interest are defined as</p>
+<p><span class="math display">\[\begin{equation*}
+    H_0: \; \theta \not\in \Theta_1 \quad vs. \quad H_1: \; \theta \in \Theta_1 := (\theta_L, \, \theta_U),
+\end{equation*}\]</span></p>
+<p>where <span class="math inline">\(\Theta_1=(\theta_L,\theta_U)\)</span> denotes the range of equivalence whose limits are known constants, and are usually symmetrical so we define <span class="math inline">\(c:=\theta_U=-\theta_L\)</span>.</p>
+<p>Existing approaches, such as the state-of-the-art Two One-Sided Tests (TOST) <span class="citation">Schuirmann (1987)</span>, have demonstrated conservativeness and decreased power, particularly for highly variable responses. This can be demonstrated by computing the power function which would be evaluated at different points of the parameter space. In particular, evaluating it at the equivalence bounds yields the size and shows that it is strictly bounded by the significance level <span class="math inline">\(\alpha\)</span>. To see this more clearly, consider a canonical form for the average equivalence problem in the univariate framework, which consists of two independent random variables <span class="math inline">\(\widehat{\theta}\)</span> and <span class="math inline">\(\widehat{\sigma}_{\nu}\)</span> with distributions</p>
+<p><span class="math display">\[\begin{equation*}
+    \widehat{\theta} \sim N\left(\theta, \sigma_{\nu}^2\right), \quad \text{and} \quad \nu\frac{\widehat{\sigma}_{\nu}^2}{\sigma_{\nu}^2} \sim \chi^2_{\nu},
+\end{equation*}\]</span> where <span class="math inline">\(\theta\)</span> is the parameter of interest, <span class="math inline">\(\sigma_{\nu}\)</span> is the standard error and <span class="math inline">\(\nu\)</span> are the degrees of freedom.</p>
+<p>The TOST is based on two test statistics</p>
+<p><span class="math display">\[\begin{equation*}
+T_L := \frac{\widehat{\theta}+c}{\widehat{\sigma}_{\nu}}\sim t_\nu\left(\frac{\theta+c}{\sigma_\nu}\right), \quad\text{and}\quad T_U := \frac{\widehat{\theta}-c}{\widehat{\sigma}_{\nu}}\sim t_\nu\left(\frac{\theta-c}{\sigma_\nu}\right).
+\end{equation*}\]</span> <span class="math inline">\(\text{H}_{0}\)</span> is rejected in favor of equivalence if both tests simultaneously reject their marginal null hypotheses, i.e.,</p>
+<p><span class="math display">\[\begin{equation*}
+     T_L \geq t_{1-\alpha,\nu}, \quad \text{ and} \quad T_U \leq -t_{1-\alpha,\nu}.
+\end{equation*}\]</span></p>
+<p>By rearranging the terms, we can define a rejection region for the TOST: <span class="math display">\[\begin{equation*}
+    C_1 := \left\{\widehat{\theta} \in \mathbb{R},\, \widehat{\sigma}_{\nu} \in \mathbb{R}_+ \,\Big\vert \,  \vert\widehat{\theta}\vert  \leq  c - t_{1-\alpha,\nu} \hat{\sigma}_\nu  \right\}.
+\end{equation*}\]</span></p>
+<p>Given <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\sigma_{\nu}\)</span>, <span class="math inline">\(\nu\)</span> and <span class="math inline">\(c\)</span>, the power function of the TOST corresponds to the probability of rejecting <span class="math inline">\(H_0\)</span>, i.e., the integral of the joint density of <span class="math inline">\((\hat{\theta},\hat{\sigma}_\nu)\)</span> over the rejection area <span class="math inline">\(C_1\)</span> (see also <span class="citation">Phillips (1990)</span>), that is <span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        p(\alpha, \theta, \sigma_{\nu}, \nu, c) :=&amp; \Pr\left(T_L \geq t_{1-\alpha,\nu}\; \text{{ and}} \;  T_U \leq -t_{1-\alpha,\nu}\,  \big|\;  \alpha, \theta, \sigma_{\nu}, \nu, c \right)\\
+        =&amp;\int_0^\infty I(\widehat\sigma_\nu t_{1-\alpha,\nu} &lt; c)\left\{\Phi\left(\frac{c+t_{\alpha,\nu} \widehat\sigma_\nu-\theta}{\sigma_\nu}\right)
+    -\Phi\left(-\frac{c+ t_{\alpha,\nu} \widehat\sigma_\nu+\theta}{\sigma_\nu}
+    \right) \right\} \\
+        \phantom{=}&amp;\times f_W ( \widehat\sigma_\nu \lvert \sigma_\nu,\nu)d\widehat\sigma_\nu.
+    \end{aligned}
+\end{equation*}\]</span> Noting that the vector <span class="math inline">\((T_L,T_U)\)</span> has a bivariate non-central <span class="math inline">\(t\)</span>-distribution with non-centrality parameters <span class="math inline">\(\frac{\theta-c}{\sigma_\nu}\)</span> and <span class="math inline">\(\frac{\theta+c}{\sigma_\nu}\)</span> respectively, we can express the power function in terms of Owen’s <span class="math inline">\(Q\)</span>-function <span class="citation">Owen (1965)</span>: <span class="math display">\[\begin{equation*}
+    \begin{aligned}
+        p(\alpha, \theta, \sigma_{\nu}, \nu, c) :=&amp; Q_{\nu}\left(-t_{1-\alpha,\nu},\, \frac{\theta - c}{\sigma_{\nu}},\, \frac{c \sqrt{\nu}}{\sigma_{\nu} t_{1-\alpha,\nu}} \right) - Q_{\nu}\left(t_{1-\alpha,\nu},\, \frac{\theta + c}{\sigma_{\nu}},\, \frac{c \sqrt{\nu}}{\sigma_{\nu} t_{1-\alpha,\nu}} \right).
+    \end{aligned}
+\end{equation*}\]</span></p>
+</div>
+<div id="conservativeness-of-the-tost" class="section level1">
+<h1>Conservativeness of the TOST</h1>
+<p>This formulation allows to demonstrate that, for <span class="math inline">\(\sigma_{\nu}&gt;0\)</span>, the TOST is not size-<span class="math inline">\(\alpha\)</span> in finite samples as <span class="math display">\[\begin{equation*}
+    \begin{aligned}
+    \omega_\nu(\alpha, c, \sigma_{\nu}) &amp;:= \sup_{\theta \, \in \, \Theta_0}\; p(\alpha, \theta, \sigma_{\nu}, \nu, c) \\
+    &amp;&lt; Q_{\nu}\left(-t_{1-\alpha,\nu},\, 0,\, \frac{c \sqrt{\nu}}{\sigma_{\nu} t_{1-\alpha,\nu}} \right) &lt; \Pr\left(T_{\nu} \leq -t_{1-\alpha,\nu}\right) = \alpha,
+    \end{aligned}
+\end{equation*}\]</span> where <span class="math inline">\(\Theta_0:=\mathbb{R}\setminus(-c,c)\)</span> corresponds to parameter space under the null.</p>
+</div>
+<div id="finite-sample-corrections-to-the-tost" class="section level1">
+<h1>Finite sample corrections to the TOST</h1>
+<p>As <span class="math inline">\(\omega_\nu(\gamma, \delta, \sigma_{\nu})\)</span> is continuously differentiable and strictly increasing in <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\delta\)</span>, solving the following matching paradigms represents a finite sample correction to the TOST and would ensure size-<span class="math inline">\(\alpha\)</span> tests: <span class="math display">\[\alpha^*:=\text{argzero}_{\gamma \in [\alpha, 0.5)} \;\big[ \omega_\nu(\gamma, c, \sigma_{\nu}) - \alpha\big],\]</span> <span class="math display">\[c^*:=\text{argzero}_{\delta \in [1, \infty)} \;\big[ \omega_\nu(\alpha, \delta, \sigma_{\nu}) - \alpha\big].\]</span></p>
+<p>The conditions under which the solutions are singletons and provide a uniformly more powerful inference are studied in length in <span class="citation">Boulaguiem et al. (2023)</span> and compared to existing methods.</p>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-boulaguiem2023finite" class="csl-entry">
+Boulaguiem, Younes, Julie Quartier, Maria Lapteva, Yogeshvar N Kalia, Maria-Pia Victoria-Feser, Stéphane Guerrier, and Dominique-Laurent Couturier. 2023. <span>“Finite Sample Adjustments for Average Equivalence Testing.”</span> <em>Statistics in Medicine</em>, 2023–03.
+</div>
+<div id="ref-Metzler74" class="csl-entry">
+Metzler, C. M. 1974. <span>“Bioavailability – a Problem in Equivalence.”</span> <em>Journal of Pharmaceutical Sciences</em> 30: 309–17.
+</div>
+<div id="ref-Owen65" class="csl-entry">
+Owen, D. B. 1965. <span>“<span class="nocase">A special case of a bivariate non-central <span class="math inline">\(t\)</span>-distribution</span>.”</span> <em>Biometrika</em> 52: 437–46.
+</div>
+<div id="ref-Phil90" class="csl-entry">
+Phillips, K. 1990. <span>“Power of the Two One-Sided Tests Procedure in Bioequivalence.”</span> <em>Journal of Pharmacokinetics and Biopharmaceutics</em> 18: 137–44.
+</div>
+<div id="ref-schuirmann1987comparison" class="csl-entry">
+Schuirmann, Donald J. 1987. <span>“A Comparison of the Two One-Sided Tests Procedure and the Power Approach for Assessing the Equivalence of Average Bioavailability.”</span> <em>Journal of Pharmacokinetics and Biopharmaceutics</em> 15 (6): 657–80.
+</div>
+<div id="ref-SennBook21" class="csl-entry">
+Senn, S. 2021. <em>Statistical Issues in Drug Development, 3rd Edition</em>. Wiley.
+</div>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
