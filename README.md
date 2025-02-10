@@ -1,11 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit this file -->
+
+# `cTOST` Overview <a href="https://yboulag.github.io/cTOST/"><img src="man/figures/hex-cTOST.png" alt="" align="right" height="138" width="125" /></a>
+
 <!-- badges: start -->
 
+[![Licence](https://img.shields.io/badge/licence-AGPL--3.0-blue.svg)](https://opensource.org/license/agpl-v3)
+[![Last-changedate](https://img.shields.io/badge/last%20change-2025--02--10-green.svg)](https://github.com/yboulag/cTOST)
 [![R-CMD-check](https://github.com/yboulag/cTOST/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yboulag/cTOST/actions/workflows/R-CMD-check.yaml)
+[![CRAN RStudio mirror
+downloads](http://cranlogs.r-pkg.org/badges/cTOST)](https://www.r-pkg.org/pkg/cTOST)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/cTOST)](https://www.r-pkg.org/pkg/cTOST)
 <!-- badges: end -->
 
-# `cTOST` Overview
+## Overview
 
 This repository holds the `cTOST` R package. This package contains the
 function `tost` which provides an assessment of equivalence in the
@@ -16,17 +25,24 @@ framework in order to ensure the preservation of the Type I error rate
 at the desired nominal level and a uniform increase in power. These two
 functions output an assessment of equivalence in the univariate
 framework after their respective corrections is applied. More details
-can be found in Boulaguiem et al. (2023) that you can access via this
-[link](https://www.biorxiv.org/content/10.1101/2023.03.11.532179v3).
+can be found in Boulaguiem et al. (2024) that you can access via this
+[link](https://doi.org/10.1002/sim.9993).
 
-# Install Instructions
+## Install Instructions
 
-The `cTOST` package is available on GitHub at the moment. It is subject
-to ongoing updates that may lead to stability issues.
+The `cTOST` package is available on both CRAN and GitHub. The CRAN
+version is considered stable, whereas the GitHub version is subject to
+modifications/updates which may lead to installation problems or broken
+functions. You can install the stable version of the `cTOST` package
+with:
 
-In order to install the package, it is required to pre-install the
-`devtools` dependency. Run the following command if you do not have it
-already installed:
+``` r
+install.packages("cTOST")
+```
+
+In order to install the latest version from GitHub, it is required to
+pre-install the `devtools` dependency. Run the following command if you
+do not have it already installed:
 
 ``` r
 install.packages("devtools")
@@ -38,23 +54,21 @@ The package is then installed with the following command:
 devtools::install_github("yboulag/cTOST")
 ```
 
-Note that Windows users are assumed that have Rtools installed (if this
-is not the case, please visit this
-[link](https://cran.r-project.org/bin/windows/Rtools/).
+Note that Windows users are assumed to have Rtools installed (if this is
+not the case, please visit this
+[link](https://cran.r-project.org/bin/windows/Rtools/)).
 
-# How to cite
+## How to cite
 
-``` r
-@Manual{boulaguiem2023ctost,
-  title = {cTOST: Finite Sample Correction of The TOST in The Univariate Framework},
-  author = {Younes Boulaguiem and Stéphane Guerrier and Dominique-Laurent Couturier},
-  year = {2023},
-  note = {R package version 1.0.0},
-  url = {https://github.com/yboulag/cTOST},
-}
-```
+    @Manual{boulaguiem2023ctost,
+      title = {cTOST: Finite Sample Correction of The TOST in The Univariate Framework},
+      author = {Younes Boulaguiem and Stéphane Guerrier and Dominique-Laurent Couturier},
+      year = {2023},
+      note = {R package version 1.0.1},
+      url = {https://github.com/yboulag/cTOST},
+    }
 
-# License
+## License
 
 The license this source code is released under is the GNU AFFERO GENERAL
 PUBLIC LICENSE (AGPL) v3.0. Please see the LICENSE file for full text.
@@ -62,9 +76,9 @@ Otherwise, please consult
 [GNU](https://www.gnu.org/licenses/agpl-3.0.en.html) which will provide
 a synopsis of the restrictions placed upon the code.
 
-# References
+## References
 
-Boulaguiem, Younes, Julie Quartier, Maria Lapteva, Yogeshvar N Kalia,
-Maria-Pia Victoria-Feser, Stéphane Guerrier, and Dominique-Laurent
-Couturier. 2023. “Finite Sample Adjustments for Average Equivalence
-Testing”, <https://www.biorxiv.org/content/10.1101/2023.03.11.532179v3>.
+Boulaguiem, Y., Quartier, J., Lapteva, M., Kalia, Y. N., Victoria-Feser,
+M. P., Guerrier, S., & Couturier, D. L., “*Finite Sample Adjustments for
+Average Equivalence Testing*”, Statistics in Medicine, 2024,
+<https://doi.org/10.1002/sim.9993>.

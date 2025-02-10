@@ -4,14 +4,14 @@
 \alias{power_TOST}
 \title{Power function}
 \usage{
-power_TOST(alpha, theta, sigma_nu, nu, delta, ...)
+power_TOST(alpha, theta, sigma, nu, delta, ...)
 }
 \arguments{
 \item{alpha}{A \code{numeric} value specifying the significance level (default = \code{0.05}).}
 
 \item{theta}{A \code{numeric} value corresponding to the estimated parameter of interest (such as a difference of means).}
 
-\item{sigma_nu}{A \code{numeric} value corresponding to the estimated standard error.}
+\item{sigma}{A \code{numeric} value corresponding to the estimated standard error.}
 
 \item{nu}{A \code{numeric} value corresponding to the number of degrees of freedom.}
 
